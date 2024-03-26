@@ -5,34 +5,41 @@ import numpy as np
 print(f"TensorFlow Version: {tf.__version__}")
 print(f"TensorFlow Hub Version: {hub.__version__}")
 
-# Tokenization and conversion to IDs function (replace with your tokenizer)
-def tokenize_and_convert_to_ids(texts):
-    # Your tokenization code here
-    return input_ids, segment_ids
+# # Create some Tensors
+# string = tf.Variable("this is a string", tf.string)
+# number = tf.Variable(324, tf.int16)
+# floating = tf.Variable(3.567, tf.float64)
+#
+# print(f"String Tensor: {string}")
+# print(f"Number Tensor: {number}")
+# print(f"Floating Point Tensor: {floating}")
+#
+# # Create Ranked Tensors
+# rank1_tensor = tf.Variable(["test"], tf.string)
+# rank2_tensor = tf.Variable([["test", "ok"], ["test", "yes"]], tf.string)
+# rank3_tensor = tf.Variable([[["a", "b"], ["c", "d"], ["e", "f"]], [["g", "h"], ["i", "j"], ["k", "l"]]], tf.string)
+#
+# # Determine Tensor Rank
+# print(f"Rank 1 Tensor: {tf.rank(rank1_tensor)}")
+# print(f"Rank 2 Tensor: {tf.rank(rank2_tensor)}")
+#
+# # Determine Tensor Shape:
+# print(f"Rank 1 Tensor Shape: {rank1_tensor.shape}")
+# print(f"Rank 2 Tensor Shape: {rank2_tensor.shape}")
+# print(f"Rank 3 Tensor Shape: {rank3_tensor.shape}")
+#
+# # Change Tensor Shape
+# tensor1 = tf.ones([3, 1, 2])
+# tensor2 = tf.reshape(tensor1, [2, 3, 1])
+# tensor3 = tf.reshape(tensor2, [3, -1])
+#
+# print(tensor1)
+# print(tensor2)
+# print(tensor3)
+# # Get Tensor Value
+# tensor_value = tensor3.numpy()
+# print(tensor_value)
 
-# Softmax function
-def softmax(x):
-    e_x = np.exp(x - np.max(x))
-    return e_x / e_x.sum(axis=0)
-
-# Input sequences
-input_sequences = ["I like chicken fried rice", "The sky is blue today"]
-
-# Tokenize and convert to IDs
-input_ids, segment_ids = tokenize_and_convert_to_ids(input_sequences)
-print(input_ids)
-inputs = {
-  'input_ids': input_ids,
-  'segment_ids': segment_ids
-}
-
-# Load BEM model from TFHub
-bem = hub.load('https://www.kaggle.com/models/google/bert/frameworks/TensorFlow2/variations/answer-equivalence-bem/versions/1')
-
-# The outputs are raw logits
-raw_outputs = bem(inputs)
-
-# Transform raw logits into probabilities using softmax
-bem_score = softmax(np.squeeze(raw_outputs))[1]
-
-print(bem_score)
+t = tf.zeros([5,5,5,5])
+t = tf.reshape(t, [625])
+print(t)
