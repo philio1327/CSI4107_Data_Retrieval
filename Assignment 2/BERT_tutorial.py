@@ -1,9 +1,13 @@
 import tensorflow as tf
 import tensorflow_hub as hub
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 print(f"TensorFlow Version: {tf.__version__}")
 print(f"TensorFlow Hub Version: {hub.__version__}")
+
+
 
 # # Create some Tensors
 # string = tf.Variable("this is a string", tf.string)
