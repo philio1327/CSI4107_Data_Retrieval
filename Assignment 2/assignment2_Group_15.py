@@ -14,7 +14,8 @@ import re
 from nltk import PorterStemmer as porter
 import string
 import os
-
+import tensorflow as tf
+import tensorflow_hub as hub
 ##########################################################################################################
 # PRE-PROCESSING FUNCTIONS FROM ASSIGNMENT 1
 ##########################################################################################################
@@ -110,7 +111,6 @@ def transform_to_dictionary(document_list):
         document_dict[docno] = (head, text_content)
     return document_dict
 
-
 if __name__ == "__main__":
     document_list = read_all_files_in_directory()
     document_dict = transform_to_dictionary(document_list)
@@ -127,6 +127,7 @@ if __name__ == "__main__":
     # Split the text content by newline and print each line separately
     for line in text_content.split("\n"):
         print(line)
+
 
 
 
